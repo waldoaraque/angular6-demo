@@ -1,0 +1,65 @@
+<div class="" id="homeContainer">
+  <div class="whiteBorderGlassBox">
+    <div class="homeHeadContainer">
+      <div class="row"> <!--row allows to divide 12 columns-->
+        <div class="col-md-auto">
+          <div class="avatarFrameOnLine">
+            <img src="assets/img/generic_avatar.png" id="homeAvatarPicture" alt="" />
+          </div>
+        </div>
+        <div class="col">
+          <b>< Username ></b>
+          <div class="">
+            <span>Online</span>
+            <br>
+            <span> < Description > </span> <br>
+            <a (click)="logout()" >Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="whiteContainerPadded marto15">
+    <div class="row">
+      <div class="col">
+        <input class="form-control" type="text" [(ngModel)]="query" placeholder="Search more friends">
+      </div>
+      <div class="col-md-auto">
+        <img class="icon" src="assets/img/logo_live_add.png" (click)="open(content)">
+      </div>
+    </div>
+
+    <hr>
+    <b *ngIf="user && user.friends">
+      Friends {{ user.friends.lenght }} / {{ user.friends.lenght }}
+    </b>
+    <div *ngIf="user && user.friends">
+      <div class="disblo marbo5">
+        <app-contact class="col-md-12" *ngFor="let user of user.friends" [uid]="user">          
+        </app-contact>
+      </div>
+    </div>
+  </div>
+</div>
+<!--modal with bootstrap ngbmodule-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add friends</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="">
+      <b>Ingress your friend email</b>
+      <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail" (keyup.enter)="sendRequest()">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Save</button>
+  </div>
+</ng-template>
+<hr>
+
+<pre>{{closeResult}}</pre>

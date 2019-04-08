@@ -1,0 +1,5 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<app-menu *ngIf="router.url != '/login'"></app-menu>
+<div [ngClass]="{ 'generalContent': router.url != '/login' }">
+  <router-outlet></router-outlet> <!--inject our router module-->
+</div>

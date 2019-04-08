@@ -1,0 +1,5 @@
+<div *ngIf="contact" routerLink="/chat/{{contact.uid}}">
+  <img class="icon" src="assets/img/logo_live_online.png" alt="">
+  {{contact.alias}} - {{contact.subalias || 'No subalias'}}
+  <small>{{contact.email}}</small>
+</div>
